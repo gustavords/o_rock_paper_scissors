@@ -88,7 +88,15 @@ function playGame() {
         round++;
     }
 
-    
+    if (scoreBoard[0] > scoreBoard[1]) {
+        console.log(`THE COMPUTER HAS WON.`);
+    }
+    else if (scoreBoard[0] < scoreBoard[1]) {
+        console.log(`THE HUMAN HAS WON.`);
+    }
+    else {
+        console.log(`BOTH HAVE LOST, TIE.`);
+    }
 
 }
 
