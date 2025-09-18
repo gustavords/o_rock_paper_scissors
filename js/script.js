@@ -35,29 +35,61 @@ function playRound(computerChoice, humanChoice) {
     let compPoint = 0;
     let statement = (choice) => {
         if (humanPoint > compPoint) {
-            return `human has won with ${choice} -- HUMAN: ${humanPoint} -- COMP: ${compPoint}`;
+            return `human has won with ${choice}`;
         }
         else if (humanPoint < compPoint) {
-            return `comp has won with ${choice} -- HUMAN: ${humanPoint} -- COMP: ${compPoint}`;
+            return `comp has won with ${choice}`;
         }
         else {
             return `both chose ${choice}, tie`;
         }
     };
 
+
     if (computerChoice == `rock` && humanChoice == `scissor` || computerChoice == `paper` && humanChoice == `rock` || computerChoice == `scissor` && humanChoice == `paper`) {
         compPoint++;
         console.log(statement(computerChoice));
+        return `comp`;
     }
     else if (humanChoice == `rock` && computerChoice == `scissor` || humanChoice == `paper` && computerChoice == `rock` || humanChoice == `scissor` && computerChoice == `paper`) {
         humanPoint++;
         console.log(statement(humanChoice));
+        return `human`;
+
     }
     else {
-        console.log(`tie`);
         console.log(statement(computerChoice));
+        return 0;
     }
 
 }
 
-playRound(getComputerChoice(), getHumanChoice());
+function playGame() {
+    let compScore = 0;
+    let humanScore = 0
+    let scoreBoard = [compScore, humanScore];
+
+    let round = 1;
+    while (round <= 5) {
+        console.log(`round: ${round}`);
+        let winner = playRound(getComputerChoice(), getHumanChoice());
+
+        if (winner == `comp`) {
+            scoreBoard[0]++;
+            console.log(`scoreBoard=> COMP: ${scoreBoard[0]} || HUMAN: ${scoreBoard[1]}`);
+        }
+        else if (winner == `human`) {
+            scoreBoard[1]++;
+            console.log(`scoreBoard=> COMP: ${scoreBoard[0]} || HUMAN: ${scoreBoard[1]}`);
+        }
+        else {
+            console.log(`scoreBoard=> COMP: ${scoreBoard[0]} || HUMAN: ${scoreBoard[1]}`);
+        }
+        round++;
+    }
+
+    
+
+}
+
+playGame();
