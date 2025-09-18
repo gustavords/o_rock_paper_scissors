@@ -45,62 +45,19 @@ function playRound(computerChoice, humanChoice) {
         }
     };
 
-    // console.log(statement(`rock`));
-
-    if (computerChoice == `rock`) {
-        //paper wins
-        if (humanChoice == `paper`) {
-            humanPoint++;
-            console.log(statement(humanChoice));
-        }
-        //scissors loses
-        else if (humanChoice == `scissors`) {
-            compPoint++;
-            console.log(statement(computerChoice));
-        }
-        else {
-            console.log(`tie`);
-            console.log(statement(computerChoice));
-        }
+    if (computerChoice == `rock` && humanChoice == `scissor` || computerChoice == `paper` && humanChoice == `rock` || computerChoice == `scissor` && humanChoice == `paper`) {
+        compPoint++;
+        console.log(statement(computerChoice));
     }
-    else if (computerChoice == `paper`) {
-        //scissor wins
-        if (humanChoice == `scissor`) {
-            humanPoint++;
-            console.log(statement(humanChoice));
-
-        }
-        //rock loses
-        else if (humanChoice == `rock`) {
-            compPoint++;
-            console.log(statement(computerChoice));
-
-        }
-        else {
-            console.log(`tie`);
-            console.log(statement(computerChoice));
-        }
+    else if (humanChoice == `rock` && computerChoice == `scissor` || humanChoice == `paper` && computerChoice == `rock` || humanChoice == `scissor` && computerChoice == `paper`) {
+        humanPoint++;
+        console.log(statement(humanChoice));
     }
-    else if (computerChoice == `scissor`) {
-        //rock wins
-        if (humanChoice == `rock`) {
-            humanPoint++;
-            console.log(statement(humanChoice));
-
-        }
-        //paper loses
-        else if (humanChoice == `paper`) {
-            compPoint++;
-            console.log(statement(computerChoice));
-
-        }
-        else {
-            console.log(`tie`);
-            console.log(statement(computerChoice));
-        }
+    else {
+        console.log(`tie`);
+        console.log(statement(computerChoice));
     }
-
 
 }
 
-playRound(`paper`, getHumanChoice());
+playRound(getComputerChoice(), getHumanChoice());
